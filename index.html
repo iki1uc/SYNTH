@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>SYNTH · META-RESPO · pZ-Matrix</title>
+
+<style>
+body { background:#111; color:#eee; font-family:Consolas; padding:20px; }
+.module { border:1px solid #444; padding:15px; margin:15px 0; }
+h2 { margin:0 0 10px 0; color:#7cf; }
+pre { background:#000; padding:10px; color:#0f0; }
+button { padding:10px 20px; font-size:16px; }
+</style>
+</head>
+
+<body>
+
+<h1>SYNTH · META-RESPO · pZ-Genauigkeitsmatrix</h1>
+
+<button onclick="RUN8()">RUN SYNTH</button>
+
+<div class="module">
+<h2>SYNTH · Ausgabe</h2>
+<pre id="out">Bereit…</pre>
+</div>
+
+<script type="module">
+import { RUN8_META } from "./RUN.js";
+
+async function RUN8(){
+    const modules = [
+        "pZ","IONAT","ROMALET","iki1uc","ROOT","WERTEN",
+        "GELB","ROT","GRUN","CORE","API","LOAD","SAVE",
+        "UPX","UPY","UPZ","RDY","RUN","HTML","INDEX","IX"
+    ];
+
+    const result = modules.map(m => RUN8_META(m));
+    out.textContent = JSON.stringify(result, null, 2);
+}
+</script>
+
+</body>
+</html>
