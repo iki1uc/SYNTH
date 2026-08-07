@@ -1,4 +1,9 @@
-function IQQ(qi){
-    return qi * (qi % 9);
-}
+<script>
+function IQQ(qi){ return qi * (qi % 9); }
 
+function runVER(){
+    const val = Number(document.getElementById("eingabe").value);
+    const iqq = IQQ(val);
+    out.textContent = iqq;
+}
+</script>
