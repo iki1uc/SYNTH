@@ -1,33 +1,3 @@
-document.getElementById("maxBtn").onclick = ()=>{
-
-    // Stabilere Score-Logik
-    const score = Math.floor(50 + Math.random() * 50);   // 50–100
-
-    // Wette abhängig vom Score
-    const wette = score > 70 ? "WIN" : "LOSE";
-
-    const meta = {
-        name: "META-SYNTHREACTOR",
-        mode: "expand",
-        accuracy: 1.0,
-        origin: "IONAT",
-        layer: "SYNTH",
-        score,
-        wette,
-        info: "Meta-Reaktor aktiv · Bewertung + Reaktion + Score · ZU² bereit"
-    };
-
-    const box = document.getElementById("moveContent");
-
-    box.style.display = "block";
-    box.innerHTML = `
-        META: ${meta.name}
-        MODE: ${meta.mode}
-        ACC: ${meta.accuracy}
-        ORIGIN: ${meta.origin}
-        LAYER: ${meta.layer}
-        SCORE: ${meta.score}
-        WETTE: ${meta.wette}
-        INFO: ${meta.info}
-    `;
-};
+function ZU(qi, iqq){
+    return qi + iqq;
+}
