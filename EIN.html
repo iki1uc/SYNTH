@@ -1,3 +1,9 @@
-function QI(x){
-    return Number(x) * 1;
+<script>
+function QI(x){ return Number(x); }
+
+function runEIN(){
+    const val = document.getElementById("eingabe").value;
+    const qi = QI(val);
+    out.textContent = qi;
 }
+</script>
