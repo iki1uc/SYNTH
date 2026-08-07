@@ -2,41 +2,77 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>SYNTH · META-RESPO · pZ-Matrix</title>
+<title>SYNTH · AXIOM ENGINE</title>
 
 <style>
-body { background:#111; color:#eee; font-family:Consolas; padding:20px; }
-.module { border:1px solid #444; padding:15px; margin:15px 0; }
-h2 { margin:0 0 10px 0; color:#7cf; }
-pre { background:#000; padding:10px; color:#0f0; }
-button { padding:10px 20px; font-size:16px; }
+body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
+button { padding:10px 20px; margin:10px 0; }
+pre { background:#111; padding:10px; border:1px solid #0f0; }
 </style>
 </head>
 
 <body>
 
-<h1>SYNTH · META-RESPO · pZ-Genauigkeitsmatrix</h1>
+<h1>SYNTH · AXIOM ENGINE</h1>
 
-<button onclick="RUN8()">RUN SYNTH</button>
+<button onclick="runAXIOM()">AXIOM FLOW</button>
 
-<div class="module">
-<h2>SYNTH · Ausgabe</h2>
 <pre id="out">Bereit…</pre>
-</div>
 
 <script type="module">
-import { RUN8_META } from "./RUN.js";
 
-async function RUN8(){
-    const modules = [
-        "pZ","IONAT","ROMALET","iki1uc","ROOT","WERTEN",
-        "GELB","ROT","GRUN","CORE","API","LOAD","SAVE",
-        "UPX","UPY","UPZ","RDY","RUN","HTML","INDEX","IX"
-    ];
+// ------------------------------------------------------
+// Axiom-Funktionen (minimal, funktional, alles sagend)
+// ------------------------------------------------------
 
-    const result = modules.map(m => RUN8_META(m));
-    out.textContent = JSON.stringify(result, null, 2);
+function EIN(x){ return Number(x); }
+function VER(x){ return x * 1; }
+function ZU(qi, iqq){ return qi + iqq; }
+function AUF(x){ return x / 3; }
+function AUS(x){ return Number(x.toFixed(3)); }
+function FALL(x){ return x; }
+
+// ------------------------------------------------------
+// IQQ = qi * (qi % 9)  (Resümee)
+// ------------------------------------------------------
+function IQQ(qi){
+    return qi * (qi % 9);
 }
+
+// ------------------------------------------------------
+// AXIOM FLOW = FALL (ein(zu(ver(FALL)ver)auf)aus)
+// ------------------------------------------------------
+function AXIOM_FLOW(input){
+
+    const qi   = EIN(input);
+    const iqq  = IQQ(qi);
+    const zu   = ZU(qi, iqq);
+    const ver1 = VER(zu);
+    const fall = FALL(ver1);
+    const ver2 = VER(fall);
+    const auf  = AUF(ver2);
+    const aus  = AUS(auf);
+
+    return {
+        qi,
+        iqq,
+        zu,
+        ver1,
+        fall,
+        ver2,
+        auf,
+        aus
+    };
+}
+
+// ------------------------------------------------------
+// Button-Ausgabe
+// ------------------------------------------------------
+window.runAXIOM = function(){
+    const result = AXIOM_FLOW(9);   // Beispielwert
+    out.textContent = JSON.stringify(result, null, 2);
+};
+
 </script>
 
 </body>
